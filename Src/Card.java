@@ -12,8 +12,8 @@ public class Card implements Comparable<Card> {
             throw new IllegalArgumentException(s + " is not a valid suit. Suits include S, H, D, C.");
         suit = s;
         // check face input
-        if (f != 'A' && f != '1' && f != '2' && f != '3' && f != '4' && f != '5' && f != '6' && f != '7' && f != '8'
-                && f != '9' && f != 'X' && f != 'J' && f != 'Q' && f != 'K')
+        if (f != 'A' && f != '2' && f != '3' && f != '4' && f != '5' && f != '6' && f != '7' && f != '8' && f != '9'
+                && f != 'X' && f != 'J' && f != 'Q' && f != 'K')
             throw new IllegalArgumentException(f + " is not a valid face. Faces include A, 2 to 9, X(10), J, Q, K.");
         face = f;
         // find value for point
