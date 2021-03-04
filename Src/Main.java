@@ -7,10 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderStroke;
 import javafx.scene.layout.BorderStrokeStyle;
@@ -19,9 +16,6 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.text.Font;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
@@ -30,7 +24,7 @@ public class Main extends Application{
 
     // Declaration of Stage and all scene in UI
     Stage window;
-    Scene startScene, playerInfoMenu, phase3P1RMenu, roundDisplay;
+    Scene startScene, playerInfoMenu, availableCardRound1, roundDisplay, scoreBoard, availableCard, congratMenu;
     static int round = 0;
 
      public static void main(String[] args){
@@ -114,55 +108,39 @@ public class Main extends Application{
         playerInfoMenu = new Scene(panePlayerInfoMenu, 350, 280);
 
         // available card menu for round 1
-        // available card menu for round 1 container
-        GridPane pane3PphaseAvailableCardRound1 = new GridPane();
-        pane3PphaseAvailableCardRound1.setAlignment(Pos.CENTER);
-        pane3PphaseAvailableCardRound1.setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
-        pane3PphaseAvailableCardRound1.setHgap(5.5);
-        pane3PphaseAvailableCardRound1.setVgap(5.5);
-
-        // 3 player phase available card menu for round 1 Tile
-        ImageView availableCard3PRound1Title1 = new ImageView("image\\icon\\3PlayerPhase.png");
-        availableCard3PRound1Title1.setFitHeight(125);
-        availableCard3PRound1Title1.setFitWidth(275);
-        ImageView availableCard3PRound1Title2 = new ImageView("image\\icon\\availableCard.png");
-        availableCard3PRound1Title2.setFitHeight(75);
-        availableCard3PRound1Title2.setFitWidth(175);
-        
+        // available card menu for round 1 Tile
+        ImageView availableCardRound1Title1 = new ImageView("image\\icon\\3PlayerPhase.png");
+        availableCardRound1Title1.setFitHeight(125);
+        availableCardRound1Title1.setFitWidth(275);
+        ImageView availableCardRound1Title2 = new ImageView("image\\icon\\availableCard.png");
+        availableCardRound1Title2.setFitHeight(75);
+        availableCardRound1Title2.setFitWidth(175);
+    
         //Player Card display
-        Label phase3P1RplayerName1 = new Label();
-        /*for(i=0, i < , i++){
-            ImageView phase3P1Rplayer1Card[i] = 
-        }*/
-        HBox phase3P1Rplayer1 = new HBox(phase3P1RplayerName1);
+        Label R1playerName1 = new Label();
+        ///Imageview
+        HBox R1player1 = new HBox(R1playerName1);
+        Label R1playerName2 = new Label();
+        ///Imageview
+        HBox R1player2 = new HBox(R1playerName2);
+        Label R1playerName3 = new Label();
+        ///Imageview
+        HBox R1player3 = new HBox(R1playerName3);
 
-        Label phase3P1RplayerName2 = new Label();
-        /*for(i=0, i < , i++){
-            ImageView phase3P1Rplayer2Card[i] = 
-        }*/
-        HBox phase3P1Rplayer2 = new HBox(phase3P1RplayerName2);
-
-        Label phase3P1RplayerName3 = new Label();
-        /*for(i=0, i < , i++){
-            ImageView phase3P1Rplayer2Card[i] = 
-        }*/
-        HBox phase3P1Rplayer3 = new HBox(phase3P1RplayerName3);
-
-        // Button for 3 player phase available card menu for round 1
-        Button btnStartGame3P1R = new Button("START");
-        Button btnShuffle3P1R = new Button("SHUFFLE");
-        HBox phase3P1RButton = new HBox(btnStartGame3P1R, btnShuffle3P1R);
-        phase3P1RButton.setSpacing(5);
-        phase3P1RButton.setAlignment(Pos.CENTER);
+        // Button available card menu for round 1
+        Button btnStartGame1R = new Button("START");
+        Button btnShuffle1R = new Button("SHUFFLE");
+        HBox R1Button = new HBox(btnStartGame1R, btnShuffle1R);
+        R1Button.setSpacing(5);
+        R1Button.setAlignment(Pos.CENTER);
 
         // Create Vbox to make the layout of the scene more neatly
-        VBox layoutAvailableCard3PRound1 = new VBox(availableCard3PRound1Title1, availableCard3PRound1Title2, phase3P1Rplayer1, phase3P1Rplayer2, phase3P1Rplayer3, phase3P1RButton);
-        layoutAvailableCard3PRound1.setSpacing(10);
-        layoutAvailableCard3PRound1.setAlignment(Pos.CENTER);
-        pane3PphaseAvailableCardRound1.add(layoutAvailableCard3PRound1, 0, 0);
+        VBox layoutAvailableCardRound1 = new VBox(availableCardRound1Title1, availableCardRound1Title2, R1player1, R1player2, R1player3, R1Button);
+        layoutAvailableCardRound1.setSpacing(10);
+        layoutAvailableCardRound1.setAlignment(Pos.CENTER);
 
-        // Insert container to 3 player phase available card menu for round 1
-        phase3P1RMenu = new Scene(pane3PphaseAvailableCardRound1, 350, 280);
+        // UI for available card menu for round 1
+        availableCardRound1 = new Scene(layoutAvailableCardRound1, 350, 400);
 
         // Round display
         // Title Round
@@ -178,21 +156,13 @@ public class Main extends Application{
 
         //Player Card display
         Label roundPlayerName1 = new Label();
-        /*for(i=0, i < , i++){
-            ImageView roundPlayer1Card[i] = 
-        }*/
+        ///Imageview
         HBox roundPlayer1 = new HBox(roundPlayerName1);
-
         Label roundPlayerName2 = new Label();
-        /*for(i=0, i < , i++){
-            ImageView roundPlayer2Card[i] = 
-        }*/
+        ///Imageview
         HBox roundPlayer2 = new HBox(roundPlayerName2);
-
         Label roundPlayerName3 = new Label();
-        /*for(i=0, i < , i++){
-            ImageView roundPlayer2Card[i] = 
-        }*/
+        ///Imageview
         HBox roundPlayer3 = new HBox(roundPlayerName3);
 
         //Button for round display
@@ -203,6 +173,66 @@ public class Main extends Application{
         layoutRoundDisplay.setAlignment(Pos.CENTER);
         // Insert VBox to scene Round display
         roundDisplay = new Scene(layoutRoundDisplay, 350, 280);
+
+        // Score Board
+        // Score Board Title
+        ImageView scoreBoardTitle = new ImageView("image\\icon\\score.png");
+        scoreBoardTitle.setFitHeight(125);
+        scoreBoardTitle.setFitWidth(275);
+
+        // Score for each player
+        Label scorePlayer1 = new Label();
+        Label scorePlayer2 = new Label();
+        Label scorePlayer3 = new Label();
+
+        // Button for Score Board
+        Button btnNextScoreBoard = new Button("NEXT");
+        // UI of Score Board
+        VBox layoutScoreBoard = new VBox(scoreBoardTitle, scorePlayer1, scorePlayer2, scorePlayer3, btnNextScoreBoard);
+        layoutScoreBoard.setSpacing(10);
+        layoutScoreBoard.setAlignment(Pos.CENTER);
+        scoreBoard = new Scene(layoutScoreBoard, 350, 280);
+
+        // available card menu after round 1
+        // available card menu after round 1 Tile
+        ImageView availableCardTitle1 = new ImageView("image\\icon\\3PlayerPhase.png");
+        availableCardTitle1.setFitHeight(125);
+        availableCardTitle1.setFitWidth(275);
+        ImageView availableCardTitle2 = new ImageView("image\\icon\\availableCard.png");
+        availableCardTitle2.setFitHeight(75);
+        availableCardTitle2.setFitWidth(175);
+    
+        //Player Card display
+        Label playerName1 = new Label();
+        ///Imageview
+        HBox player1 = new HBox(playerName1);
+        Label playerName2 = new Label();
+        ///Imageview
+        HBox player2 = new HBox(playerName2);
+        Label playerName3 = new Label();
+        ///Imageview
+        HBox player3 = new HBox(playerName3);
+
+        // Button available card menu for round 1
+        Button btnStartGame = new Button("START");
+
+        // Create Vbox to make the layout of the scene more neatly
+        VBox layoutAvailableCard = new VBox(availableCardTitle1, availableCardTitle2, player1, player2, player3, btnStartGame);
+        layoutAvailableCard.setSpacing(10);
+        layoutAvailableCard.setAlignment(Pos.CENTER);
+
+        // UI for available card menu for round 1
+        availableCard = new Scene(layoutAvailableCard, 350, 400);
+
+        // Congrat Menu
+        // UI for congrat Menu
+        ImageView congratTitle = new ImageView("image\\icon\\congrat.png");
+        Label congratText = new Label();
+        Button congratNext = new Button("NEXT");
+        VBox congratUI = new VBox(congratTitle, congratText, congratNext);
+        congratUI.setSpacing(10);
+        congratUI.setAlignment(Pos.CENTER);
+        congratMenu = new Scene(congratUI, 700, 280);
 
 
         // Display of Main Menu
@@ -223,14 +253,76 @@ public class Main extends Application{
 
         // Handle Button for Player info menu
         btnStartGamePlayerInfo.setOnAction(a -> {
-            window.setScene(phase3P1RMenu);
+            window.setScene(availableCardRound1);
         });
 
-        // Handle Button for 3 player phase available card menu for round 1
-        btnStartGame3P1R.setOnAction(a ->{
-            round = 1;
-            title1Round.setText("ROUND " + round);
-            window.setScene(roundDisplay);
+        // Handle Button for available card menu for round 1
+        btnStartGame1R.setOnAction(a ->{
+            if (round < 3){
+                round = round + 1;
+                title1Round.setText("ROUND " + round);
+                window.setScene(roundDisplay);
+            }
+            else{
+                round = round + 1;
+                int phase2PRound = round - 3;
+                title1Round.setText("ROUND " + phase2PRound);
+                window.setScene(roundDisplay); 
+            }
+        });
+
+        // Handle Button for round display
+        btnNextRound.setOnAction(a ->{
+            window.setScene(scoreBoard);
+        });
+
+        // Handle Button for Score Board
+        btnNextScoreBoard.setOnAction(a ->{
+            if (round < 3){
+                window.setScene(availableCard);
+            }
+            else if(round == 3){
+                congratText.setText("1P and 2P proceed to 2-Player Phase");
+                window.setScene(congratMenu);
+            }
+            else if(round == 7){
+                congratText.setText("1P win the game.");
+                window.setScene(congratMenu);
+            }
+            else{
+                Image phase2 = new Image("image\\icon\\2PlayerPhase.png");
+                availableCardTitle1.setImage(phase2);
+                window.setScene(availableCard);
+            }
+            
+        });
+
+        // Handle Button for Available card after round 1
+        btnStartGame.setOnAction(a ->{
+            if (round < 3){
+                round = round + 1;
+                title1Round.setText("ROUND " + round);
+                window.setScene(roundDisplay);
+            }
+            else{
+                round = round + 1;
+                int phase2PRound = round - 3;
+                title1Round.setText("ROUND " + phase2PRound);
+                window.setScene(roundDisplay); 
+            }
+        });
+
+        // Handle Button for Congrat Menu
+        congratNext.setOnAction(a ->{
+            if(round == 3){
+                Image phase2 = new Image("image\\icon\\2PlayerPhase.png");
+                availableCardRound1Title1.setImage(phase2);
+                window.setScene(availableCardRound1);
+            }
+            else{
+                window.setMaximized(true);
+                window.setScene(startScene);
+            }
         });
     }
  
