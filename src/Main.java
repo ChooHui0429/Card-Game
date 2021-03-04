@@ -319,9 +319,9 @@ public class Main extends Application{
                 availableCardRound1Title1.setImage(phase2);
                 window.setScene(availableCardRound1);
             }
-            else{
-                window.setMaximized(true);
+            else{  
                 window.setScene(startScene);
+                window.setMaximized(true);
             }
         });
     }
