@@ -113,8 +113,8 @@ public class Main extends Application{
         // Insert container to scene Player info menu
         playerInfoMenu = new Scene(panePlayerInfoMenu, 350, 280);
 
-        // 3 player phase available card menu for round 1
-        // 3 player phase available card menu for round 1 container
+        // available card menu for round 1
+        // available card menu for round 1 container
         GridPane pane3PphaseAvailableCardRound1 = new GridPane();
         pane3PphaseAvailableCardRound1.setAlignment(Pos.CENTER);
         pane3PphaseAvailableCardRound1.setPadding(new Insets(11.5, 12.5, 13.5, 14.5));
