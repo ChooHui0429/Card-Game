@@ -19,8 +19,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
+
+import java.util.LinkedList; 
+import java.util.Queue; 
+import java.util.ArrayList;
  
 public class Main extends Application{
+
+
+    
 
     // Declaration of Stage and all scene in UI
     Stage window;
@@ -29,10 +36,116 @@ public class Main extends Application{
 
      public static void main(String[] args){
          launch(args);// Main method to launch whole UI
+         
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+        // Hardcode Example
+        ArrayList<String> cardgrp1 = new ArrayList<String>();
+        cardgrp1.add("CA");
+        cardgrp1.add("C2");
+        cardgrp1.add("C3");
+        cardgrp1.add("C4");
+        cardgrp1.add("C5");
+        ArrayList<String> cardgrp2 = new ArrayList<String>();
+        cardgrp2.add("C6");
+        cardgrp2.add("C7");
+        cardgrp2.add("C8");
+        cardgrp2.add("C9");
+        cardgrp2.add("CX");
+        ArrayList<String> cardgrp3 = new ArrayList<String>();
+        cardgrp3.add("CJ");
+        cardgrp3.add("CQ");
+        cardgrp3.add("CK");
+        cardgrp3.add("DA");
+        cardgrp3.add("D2");
+        ArrayList<String> cardgrp4 = new ArrayList<String>();
+        cardgrp4.add("D3");
+        cardgrp4.add("D4");
+        cardgrp4.add("D5");
+        cardgrp4.add("D6");
+        cardgrp4.add("D7");
+        ArrayList<String> cardgrp5 = new ArrayList<String>();
+        cardgrp5.add("D8");
+        cardgrp5.add("D9");
+        cardgrp5.add("DX");
+        cardgrp5.add("DJ");
+        cardgrp5.add("DQ");
+        ArrayList<String> cardgrp6 = new ArrayList<String>();
+        cardgrp6.add("DK");
+        cardgrp6.add("HA");
+        cardgrp6.add("H2");
+        cardgrp6.add("H3");
+        cardgrp6.add("H4");
+        ArrayList<String> cardgrp7 = new ArrayList<String>();
+        cardgrp7.add("H5");
+        cardgrp7.add("H6");
+        cardgrp7.add("H7");
+        cardgrp7.add("H8");
+        cardgrp7.add("H9");
+        ArrayList<String> cardgrp8 = new ArrayList<String>();
+        cardgrp8.add("HX");
+        cardgrp8.add("HJ");
+        cardgrp8.add("HQ");
+        cardgrp8.add("HK");
+        cardgrp8.add("SA");
+        ArrayList<String> cardgrp9 = new ArrayList<String>();
+        cardgrp9.add("S2");
+        cardgrp9.add("S3");
+        cardgrp9.add("S4");
+        cardgrp9.add("S5");
+        cardgrp9.add("S6");
+        ArrayList<String> cardgrp10 = new ArrayList<String>();
+        cardgrp10.add("S7");
+        cardgrp10.add("S8");
+        cardgrp10.add("S9");
+        ArrayList<String> cardgrp11 = new ArrayList<String>();
+        cardgrp11.add("SX");
+        cardgrp11.add("SJ");
+        ArrayList<String> cardgrp12 = new ArrayList<String>();
+        cardgrp12.add("SQ");
+        cardgrp12.add("SQ");
+        ArrayList<String> cardgrp13 = new ArrayList<String>();
+        cardgrp13.add("S7");
+        cardgrp13.add("S8");
+        cardgrp13.add("S9");
+        cardgrp13.add("SX");
+        cardgrp13.add("SJ");
+        ArrayList<String> cardgrp14 = new ArrayList<String>();
+        cardgrp14.add("SQ");
+        ArrayList<String> cardgrp15 = new ArrayList<String>();
+        cardgrp15.add("SQ");
+
+        Queue<String> cardPlayer1 = new LinkedList<String>();
+        cardPlayer1.addAll(cardgrp1);
+        cardPlayer1.addAll(cardgrp2);
+        cardPlayer1.addAll(cardgrp3);
+        cardPlayer1.addAll(cardgrp10);
+        Queue<String> cardPlayer2 = new LinkedList<String>();
+        cardPlayer2.addAll(cardgrp4);
+        cardPlayer2.addAll(cardgrp5);
+        cardPlayer2.addAll(cardgrp6);
+        cardPlayer2.addAll(cardgrp11);
+        Queue<String> cardPlayer3 = new LinkedList<String>();
+        cardPlayer3.addAll(cardgrp7);
+        cardPlayer3.addAll(cardgrp8);
+        cardPlayer3.addAll(cardgrp9);
+        cardPlayer3.addAll(cardgrp12);
+        Queue<String> cardPlayer4 = new LinkedList<String>();
+        cardPlayer4.addAll(cardgrp1);
+        cardPlayer4.addAll(cardgrp2);
+        cardPlayer4.addAll(cardgrp3);
+        cardPlayer4.addAll(cardgrp4);
+        cardPlayer4.addAll(cardgrp5);
+        cardPlayer4.addAll(cardgrp14);
+        Queue<String> cardPlayer5 = new LinkedList<String>();
+        cardPlayer5.addAll(cardgrp6);
+        cardPlayer5.addAll(cardgrp7);
+        cardPlayer5.addAll(cardgrp8);
+        cardPlayer5.addAll(cardgrp9);
+        cardPlayer5.addAll(cardgrp13);
+        cardPlayer5.addAll(cardgrp15);
 
         // Declaration of main stage in UI
         window = primaryStage;
@@ -118,14 +231,17 @@ public class Main extends Application{
     
         //Player Card display
         Label R1playerName1 = new Label();
-        ///Imageview
+        ImageView[] r1Player1Card = new ImageView[26];
         HBox R1player1 = new HBox(R1playerName1);
+        R1player1.getChildren().addAll(r1Player1Card);
         Label R1playerName2 = new Label();
-        ///Imageview
+        ImageView[] r1Player2Card = new ImageView[26];
         HBox R1player2 = new HBox(R1playerName2);
+        R1player2.getChildren().addAll(r1Player2Card);
         Label R1playerName3 = new Label();
-        ///Imageview
+        ImageView[] r1Player3Card = new ImageView[17];
         HBox R1player3 = new HBox(R1playerName3);
+        R1player3.getChildren().addAll(r1Player3Card);
 
         // Button available card menu for round 1
         Button btnStartGame1R = new Button("START");
@@ -253,6 +369,11 @@ public class Main extends Application{
 
         // Handle Button for Player info menu
         btnStartGamePlayerInfo.setOnAction(a -> {
+            for(int i=0; i < cardPlayer1.size(); i++){
+                String imageName = cardPlayer1[i];
+                Image displayImage = new Image();
+            }
+                
             window.setScene(availableCardRound1);
         });
 
