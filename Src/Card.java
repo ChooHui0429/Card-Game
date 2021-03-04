@@ -16,21 +16,12 @@ public class Card implements Comparable<Card> {
                 && f != 'X' && f != 'J' && f != 'Q' && f != 'K')
             throw new IllegalArgumentException(f + " is not a valid face. Faces include A, 2 to 9, X(10), J, Q, K.");
         face = f;
-        // find value for point
-        switch (f) {
-            case 'A':
-                point = 1;
-                break;
-            case 'X':
-            case 'J':
-            case 'Q':
-            case 'K':
-                point = 10;
-                break;
-            default:
-                point = Character.getNumericValue(f);
-                break;
-        }
+        // find value for point using face value
+        int faceValue = getFaceValue(f);
+        if (faceValue >= 10)
+            point = 10;
+        else
+            point = faceValue;
     }
 
     public char getSuit() {
@@ -45,10 +36,33 @@ public class Card implements Comparable<Card> {
         return point;
     }
 
+    // private, used for internal calculations only
+    private int getFaceValue(char f) {
+        // find the value for each face of the card
+        switch (f) {
+            case 'A':
+                return 1;
+            case 'X':
+                return 10;
+            case 'J':
+                return 11;
+            case 'Q':
+                return 12;
+            case 'K':
+                return 13;
+            default:
+                return Character.getNumericValue(f);
+        }
+    }
+
     public int compareTo(Card card) {
         if (suit < card.suit)
             return -1;
         else if (suit > card.suit)
+            return 1;
+        else if (getFaceValue(face) < getFaceValue(card.face))
+            return -1;
+        else if (getFaceValue(face) > getFaceValue(card.face))
             return 1;
         else
             return 0;
