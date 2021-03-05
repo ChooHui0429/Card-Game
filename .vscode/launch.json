@@ -9,14 +9,6 @@
             "name": "Launch Main",
             "request": "launch",
             "vmArgs": "--module-path C:/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
-            "mainClass": "Src.Main",
-            "projectName": "Assignment-2_d8ab1b6f"
-        },
-        {
-            "type": "java",
-            "name": "Launch Main",
-            "request": "launch",
-            "vmArgs": "--module-path C:/javafx-sdk-11.0.2/lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "src.Main",
             "projectName": "Assignment-2_d8ab1b6f"
         },
