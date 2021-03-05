@@ -26,9 +26,6 @@ import java.util.ArrayList;
  
 public class Main extends Application{
 
-
-    
-
     // Declaration of Stage and all scene in UI
     Stage window;
     Scene startScene, playerInfoMenu, availableCardRound1, roundDisplay, scoreBoard, availableCard, congratMenu;
@@ -513,7 +510,7 @@ public class Main extends Application{
                 }
                 scoreBoardPlayer1.setText("Player 1 =" + score1);
                 scoreBoardPlayer2.setText("Player 2 =" + score2);
-                scoreBoardPlayer3.setText("");
+		        scoreBoardPlayer3.setText("");
                 window.setScene(scoreBoard);
             }
             
