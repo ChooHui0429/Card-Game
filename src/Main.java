@@ -513,6 +513,7 @@ public class Main extends Application{
                 }
                 scoreBoardPlayer1.setText("Player 1 =" + score1);
                 scoreBoardPlayer2.setText("Player 2 =" + score2);
+                scoreBoardPlayer3.setText("");
                 window.setScene(scoreBoard);
             }
             
