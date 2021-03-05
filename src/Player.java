@@ -25,6 +25,11 @@ public class Player implements Comparable<Player> {
         return hands.poll();
     }
 
+    public int addScore(int newScore) {
+        totalScore += newScore;
+        return totalScore;
+    }
+
     public int compareTo(Player player) {
         return name.compareTo(player.name);
     }
