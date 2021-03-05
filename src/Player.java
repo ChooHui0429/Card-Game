@@ -30,6 +30,11 @@ public class Player implements Comparable<Player> {
         return totalScore;
     }
 
+    public void endRound() {
+        hands.clear();
+        totalScore = 0;
+    }
+
     public int compareTo(Player player) {
         return name.compareTo(player.name);
     }
