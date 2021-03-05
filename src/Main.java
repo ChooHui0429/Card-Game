@@ -1,4 +1,4 @@
-package src;
+package Src;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -37,6 +37,12 @@ public class Main extends Application{
      public static void main(String[] args){
          launch(args);// Main method to launch whole UI
          
+    }
+
+    // To return te path way of image from the variable name
+    public String imagePath(String cardName){
+        return "image\\pokerCard\\" + cardName + ".png";
+        
     }
 
     @Override
@@ -105,7 +111,7 @@ public class Main extends Application{
         cardgrp11.add("SJ");
         ArrayList<String> cardgrp12 = new ArrayList<String>();
         cardgrp12.add("SQ");
-        cardgrp12.add("SQ");
+        cardgrp12.add("SK");
         ArrayList<String> cardgrp13 = new ArrayList<String>();
         cardgrp13.add("S7");
         cardgrp13.add("S8");
@@ -115,7 +121,7 @@ public class Main extends Application{
         ArrayList<String> cardgrp14 = new ArrayList<String>();
         cardgrp14.add("SQ");
         ArrayList<String> cardgrp15 = new ArrayList<String>();
-        cardgrp15.add("SQ");
+        cardgrp15.add("SK");
 
         Queue<String> cardPlayer1 = new LinkedList<String>();
         cardPlayer1.addAll(cardgrp1);
@@ -146,6 +152,10 @@ public class Main extends Application{
         cardPlayer5.addAll(cardgrp9);
         cardPlayer5.addAll(cardgrp13);
         cardPlayer5.addAll(cardgrp15);
+        int score1 = 0;
+        int score2 = 1;
+        int score3 = 2;
+
 
         // Declaration of main stage in UI
         window = primaryStage;
@@ -229,19 +239,16 @@ public class Main extends Application{
         availableCardRound1Title2.setFitHeight(75);
         availableCardRound1Title2.setFitWidth(175);
     
-        //Player Card display
-        Label R1playerName1 = new Label();
-        ImageView[] r1Player1Card = new ImageView[26];
-        HBox R1player1 = new HBox(R1playerName1);
-        R1player1.getChildren().addAll(r1Player1Card);
-        Label R1playerName2 = new Label();
-        ImageView[] r1Player2Card = new ImageView[26];
-        HBox R1player2 = new HBox(R1playerName2);
-        R1player2.getChildren().addAll(r1Player2Card);
-        Label R1playerName3 = new Label();
-        ImageView[] r1Player3Card = new ImageView[17];
-        HBox R1player3 = new HBox(R1playerName3);
-        R1player3.getChildren().addAll(r1Player3Card);
+        //Player Card display 
+        HBox R1player1 = new HBox();
+        R1player1.setSpacing(10);
+        R1player1.setAlignment(Pos.CENTER);
+        HBox R1player2 = new HBox();
+        R1player2.setSpacing(10);
+        R1player2.setAlignment(Pos.CENTER);
+        HBox R1player3 = new HBox();
+        R1player3.setSpacing(10);
+        R1player3.setAlignment(Pos.CENTER);
 
         // Button available card menu for round 1
         Button btnStartGame1R = new Button("START");
@@ -256,7 +263,7 @@ public class Main extends Application{
         layoutAvailableCardRound1.setAlignment(Pos.CENTER);
 
         // UI for available card menu for round 1
-        availableCardRound1 = new Scene(layoutAvailableCardRound1, 350, 400);
+        availableCardRound1 = new Scene(layoutAvailableCardRound1, 1200, 550);
 
         // Round display
         // Title Round
@@ -271,15 +278,15 @@ public class Main extends Application{
         );
 
         //Player Card display
-        Label roundPlayerName1 = new Label();
-        ///Imageview
-        HBox roundPlayer1 = new HBox(roundPlayerName1);
-        Label roundPlayerName2 = new Label();
-        ///Imageview
-        HBox roundPlayer2 = new HBox(roundPlayerName2);
-        Label roundPlayerName3 = new Label();
-        ///Imageview
-        HBox roundPlayer3 = new HBox(roundPlayerName3);
+        HBox roundPlayer1 = new HBox();
+        roundPlayer1.setSpacing(10);
+        roundPlayer1.setAlignment(Pos.CENTER);
+        HBox roundPlayer2 = new HBox();
+        roundPlayer2.setSpacing(10);
+        roundPlayer2.setAlignment(Pos.CENTER);
+        HBox roundPlayer3 = new HBox();
+        roundPlayer3.setSpacing(10);
+        roundPlayer3.setAlignment(Pos.CENTER);
 
         //Button for round display
         Button btnNextRound = new Button("NEXT");
@@ -288,7 +295,7 @@ public class Main extends Application{
         layoutRoundDisplay.setSpacing(10);
         layoutRoundDisplay.setAlignment(Pos.CENTER);
         // Insert VBox to scene Round display
-        roundDisplay = new Scene(layoutRoundDisplay, 350, 280);
+        roundDisplay = new Scene(layoutRoundDisplay, 500, 350);
 
         // Score Board
         // Score Board Title
@@ -297,20 +304,20 @@ public class Main extends Application{
         scoreBoardTitle.setFitWidth(275);
 
         // Score for each player
-        Label scorePlayer1 = new Label();
-        Label scorePlayer2 = new Label();
-        Label scorePlayer3 = new Label();
+        Label scoreBoardPlayer1 = new Label();
+        Label scoreBoardPlayer2 = new Label();
+        Label scoreBoardPlayer3 = new Label();
 
         // Button for Score Board
         Button btnNextScoreBoard = new Button("NEXT");
         // UI of Score Board
-        VBox layoutScoreBoard = new VBox(scoreBoardTitle, scorePlayer1, scorePlayer2, scorePlayer3, btnNextScoreBoard);
+        VBox layoutScoreBoard = new VBox(scoreBoardTitle, scoreBoardPlayer1, scoreBoardPlayer2, scoreBoardPlayer3, btnNextScoreBoard);
         layoutScoreBoard.setSpacing(10);
         layoutScoreBoard.setAlignment(Pos.CENTER);
         scoreBoard = new Scene(layoutScoreBoard, 350, 280);
 
         // available card menu after round 1
-        // available card menu after round 1 Tile
+        // available card menu after round 1 Title
         ImageView availableCardTitle1 = new ImageView("image\\icon\\3PlayerPhase.png");
         availableCardTitle1.setFitHeight(125);
         availableCardTitle1.setFitWidth(275);
@@ -319,17 +326,17 @@ public class Main extends Application{
         availableCardTitle2.setFitWidth(175);
     
         //Player Card display
-        Label playerName1 = new Label();
-        ///Imageview
-        HBox player1 = new HBox(playerName1);
-        Label playerName2 = new Label();
-        ///Imageview
-        HBox player2 = new HBox(playerName2);
-        Label playerName3 = new Label();
-        ///Imageview
-        HBox player3 = new HBox(playerName3);
+        HBox player1 = new HBox();
+        player1.setSpacing(10);
+        player1.setAlignment(Pos.CENTER);
+        HBox player2 = new HBox();
+        player2.setSpacing(10);
+        player2.setAlignment(Pos.CENTER);
+        HBox player3 = new HBox();
+        player3.setSpacing(10);
+        player3.setAlignment(Pos.CENTER);
 
-        // Button available card menu for round 1
+        // Button available card menu for after round 1
         Button btnStartGame = new Button("START");
 
         // Create Vbox to make the layout of the scene more neatly
@@ -337,7 +344,7 @@ public class Main extends Application{
         layoutAvailableCard.setSpacing(10);
         layoutAvailableCard.setAlignment(Pos.CENTER);
 
-        // UI for available card menu for round 1
+        // UI for available card menu for after round 1
         availableCard = new Scene(layoutAvailableCard, 350, 400);
 
         // Congrat Menu
@@ -355,6 +362,7 @@ public class Main extends Application{
         window.setTitle("Poker Card Game");
         window.getIcons().add(new Image("image\\icon\\logo.png"));
         window.setScene(startScene);
+        window.centerOnScreen();
         window.setMaximized(true);
         window.show();
 
@@ -369,38 +377,188 @@ public class Main extends Application{
 
         // Handle Button for Player info menu
         btnStartGamePlayerInfo.setOnAction(a -> {
-            for(int i=0; i < cardPlayer1.size(); i++){
-                String imageName = cardPlayer1[i];
-                Image displayImage = new Image();
+            Label R1playerName1 = new Label("Player 1 : "); 
+            Label R1playerName2 = new Label("Player 2 : "); 
+            Label R1playerName3 = new Label("Player 3 : "); 
+            R1player1.getChildren().add(R1playerName1);
+            R1player2.getChildren().add(R1playerName2);
+            R1player3.getChildren().add(R1playerName3);
+            ArrayList<String> card1P = new ArrayList<String>(cardPlayer1);
+            ArrayList<String> card2P = new ArrayList<String>(cardPlayer2);
+            ArrayList<String> card3P = new ArrayList<String>(cardPlayer3);
+            for(int i=0; i < card1P.size(); i++){
+                Image cardView = new Image(imagePath(card1P.get(i)), 50, 0, true, true);
+                ImageView cardDisplay = new ImageView(cardView);
+                R1player1.getChildren().add(cardDisplay);
             }
-                
+            for(int i=0; i < card2P.size(); i++){
+                Image cardView = new Image(imagePath(card2P.get(i)), 50, 0, true, true);
+                ImageView cardDisplay = new ImageView(cardView);
+                R1player2.getChildren().add(cardDisplay);
+            }
+            for(int i=0; i < card3P.size(); i++){
+                Image cardView = new Image(imagePath(card3P.get(i)), 50, 0, true, true);
+                ImageView cardDisplay = new ImageView(cardView);
+                R1player3.getChildren().add(cardDisplay);
+            }  
             window.setScene(availableCardRound1);
+            window.setMaximized(true);
         });
 
         // Handle Button for available card menu for round 1
         btnStartGame1R.setOnAction(a ->{
             if (round < 3){
+                R1player1.getChildren().clear();
+                R1player2.getChildren().clear();
+                R1player3.getChildren().clear();
+                Label roundPlayerName1 = new Label("Player 1:");
+                Label roundPlayerName2 = new Label("Player 2:");
+                Label roundPlayerName3 = new Label("Player 3:");
+                roundPlayer1.getChildren().add(roundPlayerName1);
+                roundPlayer2.getChildren().add(roundPlayerName2);
+                roundPlayer3.getChildren().add(roundPlayerName3);
+                ArrayList<String> card1P = new ArrayList<String>(cardPlayer1);
+                ArrayList<String> card2P = new ArrayList<String>(cardPlayer2);
+                ArrayList<String> card3P = new ArrayList<String>(cardPlayer3);
+                for(int i=0; i < 5; i++){
+                    Image cardView = new Image(imagePath(card1P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    roundPlayer1.getChildren().add(cardDisplay);
+                }
+                for(int i=0; i < 5; i++){
+                    Image cardView = new Image(imagePath(card2P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    roundPlayer2.getChildren().add(cardDisplay);
+                }
+                for(int i=0; i < 5; i++){
+                    Image cardView = new Image(imagePath(card3P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    roundPlayer3.getChildren().add(cardDisplay);
+                } 
+                Label roundPlayerScore1 = new Label(" Point = " + score1);
+                Label roundPlayerScore2 = new Label(" Point = " + score2);
+                Label roundPlayerScore3 = new Label(" Point = " + score3);
+                roundPlayer1.getChildren().add(roundPlayerScore1);
+                roundPlayer2.getChildren().add(roundPlayerScore2);
+                roundPlayer3.getChildren().add(roundPlayerScore3);
+                Image win = new Image("image\\icon\\win.png", 20, 0, true, true);
+                ImageView displayWin = new ImageView(win);
+                if (score1 > score2 && score1 > score3){
+                    roundPlayer1.getChildren().add(displayWin);
+                }
+                else if (score2 > score1 && score2 > score3){
+                    roundPlayer2.getChildren().add(displayWin); 
+                }
+                else{
+                    roundPlayer3.getChildren().add(displayWin);
+                }
                 round = round + 1;
                 title1Round.setText("ROUND " + round);
+                window.setMaximized(false);
                 window.setScene(roundDisplay);
             }
             else{
+                R1player1.getChildren().clear();
+                R1player2.getChildren().clear();
+                R1player3.getChildren().clear();
+                Label roundPlayerName1 = new Label("Player 1:");
+                Label roundPlayerName2 = new Label("Player 2:");
+                roundPlayer1.getChildren().add(roundPlayerName1);
+                roundPlayer2.getChildren().add(roundPlayerName2);
+                ArrayList<String> card1P = new ArrayList<String>(cardPlayer4);
+                ArrayList<String> card2P = new ArrayList<String>(cardPlayer5);
+                for(int i=0; i < 5; i++){
+                    Image cardView = new Image(imagePath(card1P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    roundPlayer1.getChildren().add(cardDisplay);
+                }
+                for(int i=0; i < 5; i++){
+                    Image cardView = new Image(imagePath(card2P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    roundPlayer2.getChildren().add(cardDisplay);
+                }
+                Label roundPlayerScore1 = new Label(" Point = " + score1);
+                Label roundPlayerScore2 = new Label(" Point = " + score2);
+                roundPlayer1.getChildren().add(roundPlayerScore1);
+                roundPlayer2.getChildren().add(roundPlayerScore2);
+                Image win = new Image("image\\icon\\win.png", 20, 0, true, true);
+                ImageView displayWin = new ImageView(win);
+                if (score1 > score2){
+                    roundPlayer1.getChildren().add(displayWin);
+                }
+                else{
+                    roundPlayer2.getChildren().add(displayWin);
+                }
                 round = round + 1;
                 int phase2PRound = round - 3;
                 title1Round.setText("ROUND " + phase2PRound);
+                window.setMaximized(false);
                 window.setScene(roundDisplay); 
             }
         });
 
+        btnShuffle1R.setOnAction(a -> {
+
+        });
         // Handle Button for round display
         btnNextRound.setOnAction(a ->{
-            window.setScene(scoreBoard);
+            if(round < 4){
+                roundPlayer1.getChildren().clear();
+                roundPlayer2.getChildren().clear();
+                roundPlayer3.getChildren().clear();
+                for(int i = 0; i < 5; i++){
+                    cardPlayer1.remove();
+                    cardPlayer2.remove();
+                    cardPlayer3.remove();
+                }
+                scoreBoardPlayer1.setText("Player 1 =" + score1);
+                scoreBoardPlayer2.setText("Player 2 =" + score2);
+                scoreBoardPlayer3.setText("Player 3 =" + score3);
+                window.setScene(scoreBoard);
+            }
+            else{
+                roundPlayer1.getChildren().clear();
+                roundPlayer2.getChildren().clear();
+                for(int i = 0; i < 5; i++){
+                    cardPlayer4.remove();
+                    cardPlayer5.remove();
+                }
+                scoreBoardPlayer1.setText("Player 1 =" + score1);
+                scoreBoardPlayer2.setText("Player 2 =" + score2);
+                window.setScene(scoreBoard);
+            }
+            
         });
 
         // Handle Button for Score Board
         btnNextScoreBoard.setOnAction(a ->{
             if (round < 3){
+                Label playerName1 = new Label("Player 1 : "); 
+                Label playerName2 = new Label("Player 2 : "); 
+                Label playerName3 = new Label("Player 3 : "); 
+                player1.getChildren().add(playerName1);
+                player2.getChildren().add(playerName2);
+                player3.getChildren().add(playerName3);
+                ArrayList<String> card1P = new ArrayList<String>(cardPlayer1);
+                ArrayList<String> card2P = new ArrayList<String>(cardPlayer2);
+                ArrayList<String> card3P = new ArrayList<String>(cardPlayer3);
+                for(int i=0; i < card1P.size(); i++){
+                    Image cardView = new Image(imagePath(card1P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    player1.getChildren().add(cardDisplay);
+                }
+                for(int i=0; i < card2P.size(); i++){
+                    Image cardView = new Image(imagePath(card2P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    player2.getChildren().add(cardDisplay);
+                }
+                for(int i=0; i < card3P.size(); i++){
+                    Image cardView = new Image(imagePath(card3P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    player3.getChildren().add(cardDisplay);
+                }
                 window.setScene(availableCard);
+                window.setMaximized(true);
             }
             else if(round == 3){
                 congratText.setText("1P and 2P proceed to 2-Player Phase");
@@ -411,9 +569,26 @@ public class Main extends Application{
                 window.setScene(congratMenu);
             }
             else{
+                Label playerName1 = new Label("Player 1 : "); 
+                Label playerName2 = new Label("Player 2 : "); 
+                player1.getChildren().add(playerName1);
+                player2.getChildren().add(playerName2);
+                ArrayList<String> card1P = new ArrayList<String>(cardPlayer4);
+                ArrayList<String> card2P = new ArrayList<String>(cardPlayer5);
+                for(int i=0; i < card1P.size(); i++){
+                    Image cardView = new Image(imagePath(card1P.get(i)), 40, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    player1.getChildren().add(cardDisplay);
+                }
+                for(int i=0; i < card2P.size(); i++){
+                    Image cardView = new Image(imagePath(card2P.get(i)), 40, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    player2.getChildren().add(cardDisplay);
+                }
                 Image phase2 = new Image("image\\icon\\2PlayerPhase.png");
                 availableCardTitle1.setImage(phase2);
                 window.setScene(availableCard);
+                window.setMaximized(true);
             }
             
         });
@@ -421,14 +596,90 @@ public class Main extends Application{
         // Handle Button for Available card after round 1
         btnStartGame.setOnAction(a ->{
             if (round < 3){
+                player1.getChildren().clear();
+                player2.getChildren().clear();
+                player3.getChildren().clear();
+                Label roundPlayerName1 = new Label("Player 1:");
+                Label roundPlayerName2 = new Label("Player 2:");
+                Label roundPlayerName3 = new Label("Player 3:");
+                roundPlayer1.getChildren().add(roundPlayerName1);
+                roundPlayer2.getChildren().add(roundPlayerName2);
+                roundPlayer3.getChildren().add(roundPlayerName3);
+                ArrayList<String> card1P = new ArrayList<String>(cardPlayer1);
+                ArrayList<String> card2P = new ArrayList<String>(cardPlayer2);
+                ArrayList<String> card3P = new ArrayList<String>(cardPlayer3);
+                for(int i=0; i < 5; i++){
+                    Image cardView = new Image(imagePath(card1P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    roundPlayer1.getChildren().add(cardDisplay);
+                }
+                for(int i=0; i < 5; i++){
+                    Image cardView = new Image(imagePath(card2P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    roundPlayer2.getChildren().add(cardDisplay);
+                }
+                for(int i=0; i < 5; i++){
+                    Image cardView = new Image(imagePath(card3P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    roundPlayer3.getChildren().add(cardDisplay);
+                }
+                Label roundPlayerScore1 = new Label(" Point = " + score1);
+                Label roundPlayerScore2 = new Label(" Point = " + score2);
+                Label roundPlayerScore3 = new Label(" Point = " + score3);
+                roundPlayer1.getChildren().add(roundPlayerScore1);
+                roundPlayer2.getChildren().add(roundPlayerScore2);
+                roundPlayer3.getChildren().add(roundPlayerScore3);
+                Image win = new Image("image\\icon\\win.png", 20, 0, true, true);
+                ImageView displayWin = new ImageView(win);
+                if (score1 > score2 && score1 > score3){
+                    roundPlayer1.getChildren().add(displayWin);
+                }
+                else if (score2 > score1 && score2 > score3){
+                    roundPlayer2.getChildren().add(displayWin); 
+                }
+                else{
+                    roundPlayer3.getChildren().add(displayWin);
+                } 
                 round = round + 1;
                 title1Round.setText("ROUND " + round);
+                window.setMaximized(false);
                 window.setScene(roundDisplay);
             }
             else{
+                player1.getChildren().clear();
+                player2.getChildren().clear();
+                Label roundPlayerName1 = new Label("Player 1:");
+                Label roundPlayerName2 = new Label("Player 2:");
+                roundPlayer1.getChildren().add(roundPlayerName1);
+                roundPlayer2.getChildren().add(roundPlayerName2);
+                ArrayList<String> card1P = new ArrayList<String>(cardPlayer4);
+                ArrayList<String> card2P = new ArrayList<String>(cardPlayer5);
+                for(int i=0; i < 5; i++){
+                    Image cardView = new Image(imagePath(card1P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    roundPlayer1.getChildren().add(cardDisplay);
+                }
+                for(int i=0; i < 5; i++){
+                    Image cardView = new Image(imagePath(card2P.get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    roundPlayer2.getChildren().add(cardDisplay);
+                }
+                Label roundPlayerScore1 = new Label(" Point = " + score1);
+                Label roundPlayerScore2 = new Label(" Point = " + score2);
+                roundPlayer1.getChildren().add(roundPlayerScore1);
+                roundPlayer2.getChildren().add(roundPlayerScore2);
+                Image win = new Image("image\\icon\\win.png", 20, 0, true, true);
+                ImageView displayWin = new ImageView(win);
+                if (score1 > score2){
+                    roundPlayer1.getChildren().add(displayWin);
+                }
+                else{
+                    roundPlayer2.getChildren().add(displayWin);
+                }
                 round = round + 1;
                 int phase2PRound = round - 3;
                 title1Round.setText("ROUND " + phase2PRound);
+                window.setMaximized(false);
                 window.setScene(roundDisplay); 
             }
         });
@@ -436,9 +687,29 @@ public class Main extends Application{
         // Handle Button for Congrat Menu
         congratNext.setOnAction(a ->{
             if(round == 3){
+                player1.getChildren().clear();
+                player2.getChildren().clear();
+                player3.getChildren().clear();
+                Label R1playerName1 = new Label("Player 1 : "); 
+                Label R1playerName2 = new Label("Player 2 : "); 
+                R1player1.getChildren().add(R1playerName1);
+                R1player2.getChildren().add(R1playerName2);
+                ArrayList<String> card1P = new ArrayList<String>(cardPlayer4);
+                ArrayList<String> card2P = new ArrayList<String>(cardPlayer5);
+                for(int i=0; i < card1P.size(); i++){
+                    Image cardView = new Image(imagePath(card1P.get(i)), 40, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    R1player1.getChildren().add(cardDisplay);
+                }
+                for(int i=0; i < card2P.size(); i++){
+                    Image cardView = new Image(imagePath(card2P.get(i)), 40, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    R1player2.getChildren().add(cardDisplay);
+                }
                 Image phase2 = new Image("image\\icon\\2PlayerPhase.png");
                 availableCardRound1Title1.setImage(phase2);
                 window.setScene(availableCardRound1);
+                window.setMaximized(true);
             }
             else{  
                 window.setScene(startScene);
