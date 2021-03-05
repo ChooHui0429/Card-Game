@@ -45,6 +45,10 @@ public class Hand {
 
     @Override
     public String toString() {
-        return cards.toString();
+        String outputString = cards.get(0).toString();
+        for (int i = 1; i < cards.size(); i++) {
+            outputString = outputString + " " + cards.get(i);
+        }
+        return outputString;
     }
 }
