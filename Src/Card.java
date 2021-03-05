@@ -1,4 +1,4 @@
-package Src;
+package src;
 
 public class Card implements Comparable<Card> {
     // SPADES = S, HEARTS = H, DIAMONDS = D, CLUBS = C;
