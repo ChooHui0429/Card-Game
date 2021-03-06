@@ -6,7 +6,7 @@ import java.util.Queue;
 public class Player implements Comparable<Player> {
     protected String name;
     protected Queue<Hand> hands = new LinkedList<Hand>();
-    protected int totalScore;
+    protected int totalScore = 0;
 
     public Player(String n) {
         name = n;
