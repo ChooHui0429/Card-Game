@@ -19,16 +19,16 @@ public class Hand {
         for (Card card : cards)
             switch (card.suit) {
                 case 'S':
-                    SPADES += card.point;
+                    SPADES += card.getPoint();
                     break;
                 case 'H':
-                    HEARTS += card.point;
+                    HEARTS += card.getPoint();
                     break;
                 case 'C':
-                    CLUBS += card.point;
+                    CLUBS += card.getPoint();
                     break;
                 case 'D':
-                    DIAMONDS += card.point;
+                    DIAMONDS += card.getPoint();
                     break;
             }
         // find the highest scored suit
