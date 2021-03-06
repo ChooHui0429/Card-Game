@@ -74,7 +74,7 @@ public class Game {
                         cardIndex++;
                     }
                     // add card to hand
-                    hand.cards.add(new Card(card));
+                    hand.addCard(new Card(card));
                 }
                 handIndex++;
             }

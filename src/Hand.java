@@ -12,6 +12,11 @@ public class Hand {
         cards = c;
     }
 
+    public ArrayList<Card> addCard(Card c) {
+        cards.add(c);
+        return cards;
+    }
+
     public int getScore() {
         int score = 0;
         int SPADES = 0;
