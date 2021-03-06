@@ -54,16 +54,18 @@ public class Game {
                     }
                     int randomCardIndex = rand.nextInt(deck.size());
                     int cardIndex = 0;
+                    int card = 0;
                     // find card in deck
-                    for (int card : deck) {
+                    for (int cardFromDeck : deck) {
                         if (randomCardIndex == cardIndex) {
-                            deck.remove(card);
+                            card = cardFromDeck;
+                            deck.remove(cardFromDeck);
                             break;
                         }
                         cardIndex++;
                     }
                     // add card to hand
-                    hand.cards.add(new Card(randomCardIndex));
+                    hand.cards.add(new Card(card));
                 }
                 handIndex++;
             }
