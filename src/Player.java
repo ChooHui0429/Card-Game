@@ -21,6 +21,10 @@ public class Player implements Comparable<Player> {
         hands.add(h);
     }
 
+    public Hand getHand() {
+        return hands.peek();
+    }
+
     public Hand nextHand() {
         return hands.poll();
     }
@@ -30,9 +34,8 @@ public class Player implements Comparable<Player> {
         return totalScore;
     }
 
-    public void endRound() {
+    public void clearHand() {
         hands.clear();
-        totalScore = 0;
     }
 
     public int compareTo(Player player) {
