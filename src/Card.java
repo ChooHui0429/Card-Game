@@ -3,8 +3,30 @@ package src;
 public class Card implements Comparable<Card> {
     // SPADES = S, HEARTS = H, DIAMONDS = D, CLUBS = C;
     protected char suit;
+    // A to K
     protected char face;
+    // 1 to 13
     protected int value;
+
+    // uses index for easier cards generating
+    public Card(int index) {
+        // order: S H C D, A to K, from 0 to 51
+        switch (index / 13) {
+            case 0:
+                suit = 'S';
+                break;
+            case 1:
+                suit = 'H';
+                break;
+            case 2:
+                suit = 'C';
+                break;
+            case 3:
+                suit = 'D';
+                break;
+        }
+        face = getFace(index % 13 + 1);
+    }
 
     public Card(char s, char f) {
         // check suit input
@@ -32,6 +54,23 @@ public class Card implements Comparable<Card> {
             return 10;
         else
             return value;
+    }
+
+    private char getFace(int value) {
+        switch (value) {
+            case 1:
+                return 'A';
+            case 10:
+                return 'X';
+            case 11:
+                return 'J';
+            case 12:
+                return 'Q';
+            case 13:
+                return 'K';
+            default:
+                return (char) (value + '0');
+        }
     }
 
     // private, used for internal calculations only
