@@ -62,7 +62,6 @@ public class Game {
                         }
                         cardIndex++;
                     }
-                    System.out.println(deck);
                     // add card to hand
                     hand.cards.add(new Card(randomCardIndex));
                 }
