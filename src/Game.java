@@ -13,7 +13,7 @@ public class Game {
 
     public Game() {
         // add cards to deck when initiated
-        shuffle();
+        resetCards();
     }
 
     public void addPlayer(Player p) {
@@ -21,9 +21,18 @@ public class Game {
     }
 
     // add cards back to deck
-    public void shuffle() {
+    private void resetCards() {
         for (int i = 0; i < 52; i++)
             deck.add(i);
+        for (Player player : players) {
+            player.clearHand();
+        }
+    }
+
+    // reshuffle cards in players' hands
+    public void shuffle() {
+        resetCards();
+        dealCards();
     }
 
     public void dealCards() {
@@ -72,11 +81,78 @@ public class Game {
         }
     }
 
-    public void nextRound() {
-        // TODO: next round method
+    public Player getRoundWinner() {
+        int topScorePlayer = 0, topScore = 0;
+        // find the player with highest score
+        for (int i = 0; i < players.size(); i++) {
+            int playerScore = players.get(i).getHand().getScore();
+            if (playerScore > topScore) {
+                topScore = playerScore;
+                topScorePlayer = i;
+            }
+        }
+        if (topScore == 0)
+            return null;
+        else
+            return players.get(topScorePlayer);
+    }
+
+    public Player getWinner() {
+        int topScorePlayer = 0, topScore = 0;
+        for (int i = 0; i < players.size(); i++) {
+            int playerScore = players.get(i).totalScore;
+            if (playerScore > topScore) {
+                topScore = playerScore;
+                topScorePlayer = i;
+            }
+        }
+        return players.get(topScorePlayer);
+    }
+
+    // automatically determines whether to use tallyRound or nextPhase, can use the
+    // methods manually as well
+    public void next() {
+        boolean isPhaseEnd = false;
+        for (Player player : players) {
+            if (player.getHand().cards.size() < 5)
+                isPhaseEnd = true;
+        }
+        if (isPhaseEnd)
+            nextPhase();
+        else
+            tallyRound();
+    }
+
+    public void tallyRound() {
+        int topScorePlayer = 0, topScore = 0;
+        // find the player with highest score
+        for (int i = 0; i < players.size(); i++) {
+            int playerScore = players.get(i).nextHand().getScore();
+            if (playerScore > topScore) {
+                topScore = playerScore;
+                topScorePlayer = i;
+            }
+        }
+        // add score to player with highest scoring hand
+        players.get(topScorePlayer).addScore(topScore);
+        // getRoundWinner().addScore(topScore);
+        round++;
     }
 
     public void nextPhase() {
-        // TODO: next phase method
+        round = 0;
+        // find the player with lowest score
+        int bottomScorePlayer = 0, bottomScore = 1000;
+        for (int i = 0; i < players.size(); i++) {
+            int playerScore = players.get(i).totalScore;
+            if (playerScore < bottomScore) {
+                bottomScore = playerScore;
+                bottomScorePlayer = i;
+            }
+        }
+        // remove player with lowest total score
+        players.remove(bottomScorePlayer);
+        resetCards();
+        dealCards();
     }
 }
