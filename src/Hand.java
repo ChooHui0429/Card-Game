@@ -41,13 +41,12 @@ public class Hand {
             }
         // find the highest scored suit
         score = SPADES;
-        if (HEARTS > SPADES)
+        if (HEARTS > score)
             score = HEARTS;
-        if (CLUBS > HEARTS)
+        if (CLUBS > score)
             score = CLUBS;
-        if (DIAMONDS > CLUBS)
+        if (DIAMONDS > score)
             score = DIAMONDS;
-
         return score;
     }
 
