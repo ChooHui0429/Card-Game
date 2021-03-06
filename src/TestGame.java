@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class TestGame {
     public static void main(String[] args) {
+        // TODO: high priority: use cases for other collections(set, queue, etc)
         // TODO: fix 2 player phase players are not dealt the 2 extra cards
         // TODO: low priority: null pointer after the second phase ends
         Game game = new Game();
