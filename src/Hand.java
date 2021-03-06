@@ -3,7 +3,10 @@ package src;
 import java.util.ArrayList;
 
 public class Hand {
-    protected ArrayList<Card> cards;
+    protected ArrayList<Card> cards = new ArrayList<Card>();
+
+    public Hand() {
+    }
 
     public Hand(ArrayList<Card> c) {
         cards = c;
