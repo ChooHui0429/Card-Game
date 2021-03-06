@@ -26,6 +26,7 @@ public class Card implements Comparable<Card> {
                 break;
         }
         face = getFace(index % 13 + 1);
+        value = getValue(face);
     }
 
     public Card(char s, char f) {
