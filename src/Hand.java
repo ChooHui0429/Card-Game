@@ -1,12 +1,27 @@
 package src;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.TreeSet;
 
 public class Hand {
-    protected ArrayList<Card> cards;
+    protected HashSet<Card> cards = new HashSet<Card>();
 
-    public Hand(ArrayList<Card> c) {
+    public Hand() {
+    }
+
+    public Hand(HashSet<Card> c) {
         cards = c;
+    }
+
+    public HashSet<Card> addCard(Card c) {
+        cards.add(c);
+        return cards;
+    }
+
+    public TreeSet<Card> getCards() {
+        // sorted list of cards
+        TreeSet<Card> cardList = new TreeSet<Card>(cards);
+        return cardList;
     }
 
     public int getScore() {
@@ -33,21 +48,20 @@ public class Hand {
             }
         // find the highest scored suit
         score = SPADES;
-        if (HEARTS > SPADES)
+        if (HEARTS > score)
             score = HEARTS;
-        if (CLUBS > HEARTS)
+        if (CLUBS > score)
             score = CLUBS;
-        if (DIAMONDS > CLUBS)
+        if (DIAMONDS > score)
             score = DIAMONDS;
-
         return score;
     }
 
     @Override
     public String toString() {
-        String outputString = cards.get(0).toString();
-        for (int i = 1; i < cards.size(); i++) {
-            outputString = outputString + " " + cards.get(i);
+        String outputString = "";
+        for (Card card : cards) {
+            outputString = outputString + card + " ";
         }
         return outputString;
     }
