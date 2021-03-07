@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.TreeSet;
@@ -32,6 +33,7 @@ public class Hand {
         while(card.hasNext()){
             cardArray.add(card.next().toString());
         }
+        Collections.sort(cardArray);
         return cardArray;
     }
 

@@ -371,30 +371,51 @@ public class Main extends Application{
         });
 
         btnShuffle1R.setOnAction(a -> {
-            game.shuffle();
-            Label R1playerName1 = new Label(game.players.get(0).name + " : "); 
-            Label R1playerName2 = new Label(game.players.get(1).name  + " : "); 
-            Label R1playerName3 = new Label(game.players.get(2).name  + " : "); 
-            paneAvailableCardR1.add(R1playerName1, 0, 0);
-            paneAvailableCardR1.add(R1playerName2, 0, 1);
-            paneAvailableCardR1.add(R1playerName3, 0, 2);
+            if(game.sceneSwitch < 3){
+                game.shuffle();
+                Label R1playerName1 = new Label(game.players.get(0).name + " : "); 
+                Label R1playerName2 = new Label(game.players.get(1).name  + " : "); 
+                Label R1playerName3 = new Label(game.players.get(2).name  + " : "); 
+                paneAvailableCardR1.add(R1playerName1, 0, 0);
+                paneAvailableCardR1.add(R1playerName2, 0, 1);
+                paneAvailableCardR1.add(R1playerName3, 0, 2);
             
-            for(int i=0; i < game.players.get(0).getHandArray().size(); i++){
-                Image cardView = new Image(imagePath(game.players.get(0).getHandArray().get(i)), 50, 0, true, true);
-                ImageView cardDisplay = new ImageView(cardView);
-                paneAvailableCardR1.add(cardDisplay, i+1, 0);
+                for(int i=0; i < game.players.get(0).getHandArray().size(); i++){
+                    Image cardView = new Image(imagePath(game.players.get(0).getHandArray().get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    paneAvailableCardR1.add(cardDisplay, i+1, 0);
+                }
+                for(int i=0; i < game.players.get(1).getHandArray().size(); i++){
+                    Image cardView = new Image(imagePath(game.players.get(1).getHandArray().get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    paneAvailableCardR1.add(cardDisplay, i+1, 1);
+                }
+                for(int i=0; i < game.players.get(2).getHandArray().size(); i++){
+                    Image cardView = new Image(imagePath(game.players.get(2).getHandArray().get(i)), 50, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    paneAvailableCardR1.add(cardDisplay, i+1, 2);
+                }  
+                window.setScene(availableCardRound1);
             }
-            for(int i=0; i < game.players.get(1).getHandArray().size(); i++){
-                Image cardView = new Image(imagePath(game.players.get(1).getHandArray().get(i)), 50, 0, true, true);
-                ImageView cardDisplay = new ImageView(cardView);
-                paneAvailableCardR1.add(cardDisplay, i+1, 1);
+            else{
+                game.shuffle();
+                Label R1playerName1 = new Label(game.players.get(0).name + " : "); 
+                Label R1playerName2 = new Label(game.players.get(1).name  + " : "); 
+                paneAvailableCardR1.add(R1playerName1, 0, 0);
+                paneAvailableCardR1.add(R1playerName2, 0, 1);
+            
+                for(int i=0; i < game.players.get(0).getHandArray().size(); i++){
+                    Image cardView = new Image(imagePath(game.players.get(0).getHandArray().get(i)), 40, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    paneAvailableCardR1.add(cardDisplay, i+1, 0);
+                }
+                for(int i=0; i < game.players.get(1).getHandArray().size(); i++){
+                    Image cardView = new Image(imagePath(game.players.get(1).getHandArray().get(i)), 40, 0, true, true);
+                    ImageView cardDisplay = new ImageView(cardView);
+                    paneAvailableCardR1.add(cardDisplay, i+1, 1);
+                }
+                window.setScene(availableCardRound1);
             }
-            for(int i=0; i < game.players.get(2).getHandArray().size(); i++){
-                Image cardView = new Image(imagePath(game.players.get(2).getHandArray().get(i)), 50, 0, true, true);
-                ImageView cardDisplay = new ImageView(cardView);
-                paneAvailableCardR1.add(cardDisplay, i+1, 2);
-            }  
-            window.setScene(availableCardRound1);
         });
         
         // Handle Button for round display
@@ -453,7 +474,7 @@ public class Main extends Application{
             }
             else if(game.sceneSwitch == 8 && game.round == 4){
                 game.nextPhase();
-                congratText.setText(game.players.get(0).name + " win te game.");
+                congratText.setText(game.players.get(0).name + " win the game.");
                 window.setScene(congratMenu);
             }
             else{
