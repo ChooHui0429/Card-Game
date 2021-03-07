@@ -1,20 +1,27 @@
 package src;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.TreeSet;
 
 public class Hand {
-    protected ArrayList<Card> cards = new ArrayList<Card>();
+    protected HashSet<Card> cards = new HashSet<Card>();
 
     public Hand() {
     }
 
-    public Hand(ArrayList<Card> c) {
+    public Hand(HashSet<Card> c) {
         cards = c;
     }
 
-    public ArrayList<Card> addCard(Card c) {
+    public HashSet<Card> addCard(Card c) {
         cards.add(c);
         return cards;
+    }
+
+    public TreeSet<Card> getCards() {
+        // sorted list of cards
+        TreeSet<Card> cardList = new TreeSet<Card>(cards);
+        return cardList;
     }
 
     public int getScore() {
@@ -52,9 +59,9 @@ public class Hand {
 
     @Override
     public String toString() {
-        String outputString = cards.get(0).toString();
-        for (int i = 1; i < cards.size(); i++) {
-            outputString = outputString + " " + cards.get(i);
+        String outputString = "";
+        for (Card card : cards) {
+            outputString = outputString + card + " ";
         }
         return outputString;
     }
