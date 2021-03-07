@@ -1,5 +1,7 @@
 package src;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -19,6 +21,15 @@ public class Player implements Comparable<Player> {
 
     public void addHand(Hand h) {
         hands.add(h);
+    }
+
+    public ArrayList<String> getHandArray() {
+        ArrayList<String> cardArray = new ArrayList<>();
+        Iterator<Hand> hand = hands.iterator();
+        while(hand.hasNext()){
+            cardArray.addAll(hand.next().getCardsArray());
+        }
+        return cardArray;
     }
 
     public Hand getHand() {

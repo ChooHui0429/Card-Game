@@ -1,6 +1,8 @@
 package src;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.TreeSet;
 
 public class Hand {
@@ -22,6 +24,15 @@ public class Hand {
         // sorted list of cards
         TreeSet<Card> cardList = new TreeSet<Card>(cards);
         return cardList;
+    }
+
+    public ArrayList<String> getCardsArray(){
+        ArrayList<String> cardArray = new ArrayList<>();
+        Iterator<Card> card = cards.iterator();
+        while(card.hasNext()){
+            cardArray.add(card.next().toString());
+        }
+        return cardArray;
     }
 
     public int getScore() {
@@ -64,5 +75,5 @@ public class Hand {
             outputString = outputString + card + " ";
         }
         return outputString;
-    }
+    } 
 }
