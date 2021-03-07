@@ -1,7 +1,6 @@
 package src;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
@@ -9,7 +8,7 @@ import java.util.Random;
 public class Game {
     protected ArrayList<Player> players = new ArrayList<Player>();
     protected int round = 0;
-    protected HashSet<Integer> deck = new HashSet<Integer>();
+    protected LinkedList<Integer> deck = new LinkedList<Integer>();
 
     public Game() {
         // add cards to deck when initiated
@@ -61,19 +60,11 @@ public class Game {
                             player.addHand(hands.poll());
                         break;
                     }
-                    int randomCardIndex = rand.nextInt(deck.size());
-                    int cardIndex = 0;
-                    int card = 0;
-                    // find card in deck
-                    for (int cardFromDeck : deck) {
-                        if (randomCardIndex == cardIndex) {
-                            card = cardFromDeck;
-                            deck.remove(cardFromDeck);
-                            break;
-                        }
-                        cardIndex++;
-                    }
-                    // add card to hand
+                    // generate a random deck index
+                    int randomDeckIndex = rand.nextInt(deck.size());
+                    // remove card in deck by random index
+                    int card = deck.remove(randomDeckIndex);
+                    // add removed card to hand
                     hand.addCard(new Card(card));
                 }
                 handIndex++;
