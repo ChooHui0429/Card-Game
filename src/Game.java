@@ -54,32 +54,26 @@ public class Game {
         int handIndex = 0;
         // queue of hands to deal cards to, then dealt to each player
         Queue<Hand> hands = new LinkedList<Hand>();
-        while (deck.size() > 0) {
-            if (handIndex == 5) {
+        while (!deck.isEmpty()) {
+            // create a queue of hands for each player
+            if (handIndex == 0) {
+                hands.clear();
+                for (int j = 0; j < players.size(); j++)
+                    hands.add(new Hand());
+            }
+            // deal a card to each hand
+            for (Hand hand : hands) {
+                // take the top card out of deck
+                if (!deck.isEmpty())
+                    hand.addCard(new Card(deck.pop()));
+            }
+            handIndex++;
+            if (handIndex == 5 || deck.isEmpty()) {
                 // reach 5(number of cards in a hand), add hand to player and resets hand index
                 handIndex = 0;
                 for (Player player : players)
                     player.addHand(hands.poll());
 
-            } else {
-                if (handIndex == 0) {
-                    hands.clear();
-                    // create sets of hands by number of players
-                    for (int j = 0; j < players.size(); j++)
-                        hands.add(new Hand());
-                }
-                // go through set of hands to deal
-                for (Hand hand : hands) {
-                    // stop dealing cards when deck is empty
-                    if (deck.size() == 0) {
-                        for (Player player : players)
-                            player.addHand(hands.poll());
-                        break;
-                    }
-                    // take the top card out of deck
-                    hand.addCard(new Card(deck.pop()));
-                }
-                handIndex++;
             }
         }
     }
