@@ -48,6 +48,8 @@ public class Game {
     }
 
     public void dealCards() {
+        if (players.size() == 0)
+            return;
         Random rand = new Random();
         int handIndex = 0;
         Queue<Hand> hands = new LinkedList<Hand>();
