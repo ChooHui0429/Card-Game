@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
+import java.util.Stack;
 
 public class Game {
     protected ArrayList<Player> players = new ArrayList<Player>();
     protected int round = 0;
-    protected LinkedList<Integer> deck = new LinkedList<Integer>();
+    protected Stack<Integer> deck = new Stack<Integer>();
 
     public Game() {
         // add cards to deck when initiated
@@ -50,8 +51,8 @@ public class Game {
     public void dealCards() {
         if (players.size() == 0)
             return;
-        Random rand = new Random();
         int handIndex = 0;
+        // queue of hands to deal cards to, then dealt to each player
         Queue<Hand> hands = new LinkedList<Hand>();
         while (deck.size() > 0) {
             if (handIndex == 5) {
@@ -67,20 +68,16 @@ public class Game {
                     for (int j = 0; j < players.size(); j++)
                         hands.add(new Hand());
                 }
-                // go through set of hands
+                // go through set of hands to deal
                 for (Hand hand : hands) {
                     // stop dealing cards when deck is empty
-                    if (deck.size() <= 0) {
+                    if (deck.size() == 0) {
                         for (Player player : players)
                             player.addHand(hands.poll());
                         break;
                     }
-                    // generate a random deck index
-                    int randomDeckIndex = rand.nextInt(deck.size());
-                    // remove card in deck by random index
-                    int card = deck.remove(randomDeckIndex);
-                    // add removed card to hand
-                    hand.addCard(new Card(card));
+                    // take the top card out of deck
+                    hand.addCard(new Card(deck.pop()));
                 }
                 handIndex++;
             }
