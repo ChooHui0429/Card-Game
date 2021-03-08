@@ -21,8 +21,21 @@ public class Game {
 
     // add cards back to deck
     private void resetCards() {
+        deck.clear();
+        Random rand = new Random();
+        LinkedList<Integer> cardList = new LinkedList<Integer>();
+        // add a list of cards by index
         for (int i = 0; i < 52; i++)
-            deck.add(i);
+            cardList.add(i);
+        while (cardList.size() > 0) {
+            // generate a random deck index
+            int r = rand.nextInt(cardList.size());
+            // remove card in deck by random index
+            int card = cardList.remove(r);
+            // add removed card to deck
+            deck.add(card);
+        }
+        // clear each players' hand
         for (Player player : players) {
             player.clearHand();
         }
