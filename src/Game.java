@@ -9,7 +9,6 @@ public class Game {
     protected ArrayList<Player> players = new ArrayList<Player>();
     protected int round = 0;
     protected LinkedList<Integer> deck = new LinkedList<Integer>();
-    protected int sceneSwitch = 0;
 
     public Game() {
         // add cards to deck when initiated
@@ -104,7 +103,6 @@ public class Game {
     // automatically determines whether to use tallyRound or nextPhase, can use the
     // methods manually as well
     public void next() {
-        sceneSwitch++;
         boolean isPhaseEnd = false;
         for (Player player : players) {
             if (player.getHand().cards.size() < 5)
@@ -151,7 +149,6 @@ public class Game {
     public void gameEnd(){
         //Every Variable reset
         round = 0;
-        sceneSwitch = 0;
         players.clear();
         resetCards();
     }

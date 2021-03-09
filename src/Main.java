@@ -281,7 +281,7 @@ public class Main extends Application{
 
         // Handle Button for available card menu for round 1
         btnStartGame1R.setOnAction(a ->{
-            if (game.sceneSwitch < 3){
+            if (game.players.size() == 3){
                 paneAvailableCardR1.getChildren().clear();
                 for (int i = 0; i < 3; i++){
                     Label roundPlayerName = new Label(game.players.get(i).name + " : ");
@@ -346,7 +346,7 @@ public class Main extends Application{
         });
 
         btnShuffle1R.setOnAction(a -> {
-            if(game.sceneSwitch < 3){
+            if(game.players.size() == 3){
                 game.shuffle();
                 for (int i = 0; i < 3; i++){
                     Label R1playerName = new Label(game.players.get(i).name + " : "); 
@@ -384,7 +384,7 @@ public class Main extends Application{
         
         // Handle Button for round display
         btnNextRound.setOnAction(a ->{
-            if(game.sceneSwitch < 4){
+            if(game.players.size() == 3){
                 paneRound.getChildren().clear();
                 scoreBoardPlayer1.setText(game.players.get(0).name + " = " + game.players.get(0).totalScore);
                 scoreBoardPlayer2.setText(game.players.get(1).name + " = " + game.players.get(1).totalScore);
@@ -402,7 +402,7 @@ public class Main extends Application{
 
         // Handle Button for Score Board
         btnNextScoreBoard.setOnAction(a ->{
-            if (game.sceneSwitch < 3){
+            if (game.players.size() == 3 && game.round < 3){
                 for(int i = 0; i < 3; i++){
                     Label playerName = new Label(game.players.get(i).name + " : ");
                     paneAvailableCard.add(playerName, 0, i);
@@ -419,12 +419,12 @@ public class Main extends Application{
                 window.setScene(availableCard);
                 window.setMaximized(true);
             }
-            else if(game.sceneSwitch == 3){
+            else if(game.players.size() == 3 &&  game.round == 3){
                 game.next();
                 congratText.setText(game.players.get(0).name + " and " + game.players.get(1).name + " proceed to 2-Player Phase");
                 window.setScene(congratMenu);
             }
-            else if(game.sceneSwitch == 8 && game.round == 4){
+            else if(game.players.size() == 2 && game.round == 4){
                 game.nextPhase();
                 congratText.setText(game.players.get(0).name + " win the game.");
                 window.setScene(congratMenu);
@@ -454,7 +454,7 @@ public class Main extends Application{
         // Handle Button for Available card after round 1
         btnStartGame.setOnAction(a ->{
             paneAvailableCard.getChildren().clear();
-            if (game.sceneSwitch < 3){
+            if (game.players.size() == 3){
                 for(int i = 0; i < 3; i++){
                     Label roundPlayerName = new Label(game.players.get(i).name + " : ");
                     paneRound.add(roundPlayerName, 0, i);
@@ -518,7 +518,7 @@ public class Main extends Application{
 
         // Handle Button for Congrat Menu
         congratNext.setOnAction(a ->{
-            if(game.sceneSwitch == 4){
+            if(game.players.size() == 2){
                 paneAvailableCard.getChildren().clear();
                 for(int i =0; i <2; i++){
                     Label R1playerName = new Label(game.players.get(i).name + " : ");
