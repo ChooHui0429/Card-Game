@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
+import java.util.Stack;
 
 public class Game {
     protected ArrayList<Player> players = new ArrayList<Player>();
     protected int round = 0;
-    protected LinkedList<Integer> deck = new LinkedList<Integer>();
+    protected Stack<Integer> deck = new Stack<Integer>();
 
     public Game() {
         // add cards to deck when initiated
@@ -21,8 +22,21 @@ public class Game {
 
     // add cards back to deck
     private void resetCards() {
+        deck.clear();
+        Random rand = new Random();
+        LinkedList<Integer> cardList = new LinkedList<Integer>();
+        // add a list of cards by index
         for (int i = 0; i < 52; i++)
-            deck.add(i);
+            cardList.add(i);
+        while (cardList.size() > 0) {
+            // generate a random deck index
+            int r = rand.nextInt(cardList.size());
+            // remove card in deck by random index
+            int card = cardList.remove(r);
+            // add removed card to deck
+            deck.add(card);
+        }
+        // clear each players' hand
         for (Player player : players) {
             player.clearHand();
         }
@@ -35,39 +49,31 @@ public class Game {
     }
 
     public void dealCards() {
-        Random rand = new Random();
+        if (players.size() == 0)
+            return;
         int handIndex = 0;
+        // queue of hands to deal cards to, then dealt to each player
         Queue<Hand> hands = new LinkedList<Hand>();
-        while (deck.size() > 0) {
-            if (handIndex == 5) {
+        while (!deck.isEmpty()) {
+            // create a queue of hands for each player
+            if (handIndex == 0) {
+                hands.clear();
+                for (int j = 0; j < players.size(); j++)
+                    hands.add(new Hand());
+            }
+            // deal a card to each hand
+            for (Hand hand : hands) {
+                // take the top card out of deck
+                if (!deck.isEmpty())
+                    hand.addCard(new Card(deck.pop()));
+            }
+            handIndex++;
+            if (handIndex == 5 || deck.isEmpty()) {
                 // reach 5(number of cards in a hand), add hand to player and resets hand index
                 handIndex = 0;
                 for (Player player : players)
                     player.addHand(hands.poll());
 
-            } else {
-                if (handIndex == 0) {
-                    hands.clear();
-                    // create sets of hands by number of players
-                    for (int j = 0; j < players.size(); j++)
-                        hands.add(new Hand());
-                }
-                // go through set of hands
-                for (Hand hand : hands) {
-                    // stop dealing cards when deck is empty
-                    if (deck.size() <= 0) {
-                        for (Player player : players)
-                            player.addHand(hands.poll());
-                        break;
-                    }
-                    // generate a random deck index
-                    int randomDeckIndex = rand.nextInt(deck.size());
-                    // remove card in deck by random index
-                    int card = deck.remove(randomDeckIndex);
-                    // add removed card to hand
-                    hand.addCard(new Card(card));
-                }
-                handIndex++;
             }
         }
     }
