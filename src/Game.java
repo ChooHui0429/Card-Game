@@ -146,7 +146,7 @@ public class Game {
         resetCards();
         dealCards();
     }
-    public void gameEnd(){
+    public void resetGame(){
         //Every Variable reset
         round = 0;
         players.clear();

@@ -539,7 +539,7 @@ public class Main extends Application{
                 window.setMaximized(true);
             }
             else{
-                game.gameEnd();
+                game.resetGame();
                 window.setScene(startScene);
                 window.setMaximized(true);     
             }
