@@ -152,4 +152,10 @@ public class Game {
         resetCards();
         dealCards();
     }
+    public void resetGame(){
+        //Every Variable reset
+        round = 0;
+        players.clear();
+        resetCards();
+    }
 }
