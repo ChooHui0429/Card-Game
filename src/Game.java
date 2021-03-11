@@ -127,15 +127,11 @@ public class Game {
             int playerScore = players.get(i).nextHand().getScore();
             if (playerScore > topScore) {
                 topScore = playerScore;
+                topScorePlayer = i;
             }
         }
         // add score to player with highest scoring hand
-        for (int i = 0; i < players.size(); i++) {
-            int playerScore = players.get(i).nextHand().getScore();
-            if(playerScore == topScore){
-                players.get(topScorePlayer).addScore(topScore);
-            }
-        }
+        players.get(topScorePlayer).addScore(topScore);
         // getRoundWinner().addScore(topScore);
         round++;
     }
