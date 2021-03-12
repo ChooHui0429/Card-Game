@@ -300,11 +300,13 @@ public class Main extends Application{
                     Label roundPlayerScore = new Label(" Point = " + game.players.get(i).getHand().getScore());
                     paneRound.add(roundPlayerScore, 6, i);
                 }
-                Image win = new Image("image\\icon\\win.png", 20, 0, true, true);
-                ImageView displayWin = new ImageView(win);
                 for(int i=0; i < game.players.size(); i++){
-                    if (game.getRoundWinner().equals(game.players.get(i))){
-                        paneRound.add(displayWin, 7, i);
+                    for(int j=0; j < game.getRoundWinner().size(); j++){
+                        if (game.getRoundWinner().get(j).equals(game.players.get(i))){
+                            Image win = new Image("image\\icon\\win.png", 20, 0, true, true);
+                            ImageView displayWin = new ImageView(win);
+                            paneRound.add(displayWin, 7, i);
+                        }
                     }
                 }
                 game.next();
@@ -331,11 +333,13 @@ public class Main extends Application{
                     Label roundPlayerScore = new Label(" Point = " + game.players.get(i).getHand().getScore());
                     paneRound.add(roundPlayerScore, 6, i);
                 }
-                Image win = new Image("image\\icon\\win.png", 20, 0, true, true);
-                ImageView displayWin = new ImageView(win);
                 for(int i=0; i < game.players.size(); i++){
-                    if (game.getRoundWinner().equals(game.players.get(i))){
-                        paneRound.add(displayWin, 7, i);
+                    for(int j=0; j < game.getRoundWinner().size(); j++){
+                        if (game.getRoundWinner().get(j).equals(game.players.get(i))){
+                            Image win = new Image("image\\icon\\win.png", 20, 0, true, true);
+                            ImageView displayWin = new ImageView(win);
+                            paneRound.add(displayWin, 7, i);
+                        }
                     }
                 }
                 game.next();
@@ -472,11 +476,13 @@ public class Main extends Application{
                     Label roundPlayerScore = new Label(" Point = " + game.players.get(i).getHand().getScore());
                     paneRound.add(roundPlayerScore, 6, i);
                 }
-                Image win = new Image("image\\icon\\win.png", 20, 0, true, true);
-                ImageView displayWin = new ImageView(win);
                 for(int i=0; i < game.players.size(); i++){
-                    if (game.getRoundWinner().equals(game.players.get(i))){
-                        paneRound.add(displayWin, 7, i);
+                    for(int j=0; j < game.getRoundWinner().size(); j++){
+                        if (game.getRoundWinner().get(j).equals(game.players.get(i))){
+                            Image win = new Image("image\\icon\\win.png", 20, 0, true, true);
+                            ImageView displayWin = new ImageView(win);
+                            paneRound.add(displayWin, 7, i);
+                        }
                     }
                 }
                 game.next();
@@ -502,11 +508,13 @@ public class Main extends Application{
                     Label roundPlayerScore = new Label(" Point = " + game.players.get(i).getHand().getScore());
                     paneRound.add(roundPlayerScore, 6, i);
                 }
-                Image win = new Image("image\\icon\\win.png", 20, 0, true, true);
-                ImageView displayWin = new ImageView(win);
                 for(int i=0; i < game.players.size(); i++){
-                    if (game.getRoundWinner().equals(game.players.get(i))){
-                        paneRound.add(displayWin, 7, i);
+                    for(int j=0; j < game.getRoundWinner().size(); j++){
+                        if (game.getRoundWinner().get(j).equals(game.players.get(i))){
+                            Image win = new Image("image\\icon\\win.png", 20, 0, true, true);
+                            ImageView displayWin = new ImageView(win);
+                            paneRound.add(displayWin, 7, i);
+                        }
                     }
                 }
                 game.next();
