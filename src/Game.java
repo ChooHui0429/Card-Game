@@ -78,20 +78,22 @@ public class Game {
         }
     }
 
-    public Player getRoundWinner() {
-        int topScorePlayer = 0, topScore = 0;
+    public ArrayList<Player> getRoundWinner() {
+        int topScore = 0;
+        ArrayList<Player> winner = new ArrayList<Player>();
         // find the player with highest score
         for (int i = 0; i < players.size(); i++) {
             int playerScore = players.get(i).getHand().getScore();
             if (playerScore > topScore) {
                 topScore = playerScore;
-                topScorePlayer = i;
             }
         }
-        if (topScore == 0)
-            return null;
-        else
-            return players.get(topScorePlayer);
+        for (int i = 0; i < players.size(); i++) {
+            int playerScore = players.get(i).getHand().getScore();
+            if(playerScore == topScore)
+                winner.add(players.get(i));     
+        }
+        return winner;
     }
 
     public Player getWinner() {
@@ -121,17 +123,21 @@ public class Game {
     }
 
     public void tallyRound() {
-        int topScorePlayer = 0, topScore = 0;
+        int topScore = 0;
         // find the player with highest score
         for (int i = 0; i < players.size(); i++) {
-            int playerScore = players.get(i).nextHand().getScore();
+            int playerScore = players.get(i).getHand().getScore();
             if (playerScore > topScore) {
                 topScore = playerScore;
-                topScorePlayer = i;
             }
         }
         // add score to player with highest scoring hand
-        players.get(topScorePlayer).addScore(topScore);
+        for (int i = 0; i < players.size(); i++) {
+            int playerScore = players.get(i).nextHand().getScore();
+            if (playerScore == topScore) {
+                players.get(i).addScore(topScore);
+            }
+        }
         // getRoundWinner().addScore(topScore);
         round++;
     }
