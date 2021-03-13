@@ -1,0 +1,33 @@
+Member 1 1201301288 Lim Tian Hee
+Member 2 1191303087 Tan Choo Hui
+
+TASK DISTRIBUTION
+All members tasks
+1. Deciding on class structure - Main, Game, Player, Hand, Card
+Main - implements JavaFX user interface
+Game - Store game info and methods to progress the game
+Player - Stores name, multiple hands and total score
+Hand - Stores cards, includes sorting, and get score method
+Card - Stores each card info, value, score, and implements comparable
+
+Individual tasks(sorted by progress of program)
+1. JavaFX inheritance - implementing JavaFX for the game UI --- Tan Choo Hui
+2. Create classes to play the Game --- Lim Tian Hee
+3. Get player names and display them in game --- Tan Choo Hui
+4. Displaying the current round/phase of the game --- Tan Choo Hui
+5. Distribute available cards to each player evenly --- Lim Tian Hee
+6. Displaying the available cards for each player at the start of each round --- Tan Choo Hui
+7. Displaying cards using card image --- Tan Choo Hui
+8. Give option to shuffle deck at the start of each phase --- Tan Choo Hui
+9. Shuffle cards into a stack of cards(deck) --- Lim Tian Hee
+10. Sorting the 5 cards for each player by suit then face --- Lim Tian Hee
+11. Determine the score for each 5 cards --- Lim Tian Hee
+12. Displaying the hand competing in each round for each player --- Tan Choo Hui
+13. Identify the winner for each round and phase --- Lim Tian Hee
+14. Identify the winner for each round and phase with a tie in score --- Tan Choo Hui
+15. Tracking each players' scores --- Lim Tian Hee
+16. Displaying round and phase winner --- Tan Choo Hui
+17. Displaying each players' total score --- Tan Choo Hui
+18. Track score for each player --- Lim Tian Hee
+19. Displaying each players' available cards at the end of each round --- Tan Choo Hui
+20. Reset Game --- Tan Choo Hui
