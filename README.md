@@ -6,8 +6,6 @@
 JavaFX Version : 11.0.2
 Java Version : 11.0.9.1
 
----
-
 ### JavaFX SDK
 
 1. Before launching our program, you should make sure that Javafx SDK is downloaded and ready.
@@ -18,8 +16,6 @@ Java Version : 11.0.9.1
    xxxx = your computer operating system
 
 3. After done the download, extract the .zip and place the JavaFX SDK at your preferrable place as your path way.
-
----
 
 ### Run with Command Prompt
 
